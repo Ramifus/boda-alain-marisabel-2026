@@ -1,0 +1,186 @@
+---
+// Portada.astro
+---
+
+<section
+    id="portada-sobre"
+    class="fixed inset-0 w-full h-screen z-50 flex flex-col items-center justify-center overflow-hidden bg-[#1b3a5b]"
+>
+    <!-- FONDO AZUL -->
+    <img
+        src="/imagenes/fondoazul.png"
+        alt="Fondo"
+        class="absolute inset-0 w-full h-full object-cover z-0"
+    />
+
+    <!-- FLOR SUPERIOR (esquina superior izquierda) -->
+    <img
+        id="flor-arriba"
+        src="/imagenes/florarriba.png"
+        alt="Flores superiores"
+        class="absolute top-0 left-0 w-2/5 sm:w-1/3 md:w-1/4 lg:w-1/5 max-w-xs z-10 pointer-events-none select-none"
+    />
+
+    <!-- FLOR INFERIOR (esquina inferior derecha) -->
+    <img
+        id="flor-abajo"
+        src="/imagenes/florabajo.png"
+        alt="Flores inferiores"
+        class="absolute bottom-0 right-0 w-2/5 sm:w-1/3 md:w-1/4 lg:w-1/5 max-w-xs z-10 pointer-events-none select-none"
+    />
+
+    <!-- CONTENIDO CENTRAL -->
+    <div
+        class="relative z-20 flex flex-col items-center justify-center text-center px-6 w-full"
+    >
+        <!-- "Nuestra boda" -->
+        <p
+            class="font-cormorant text-[#f3ead9] text-2xl sm:text-3xl md:text-4xl tracking-[0.1em] uppercase mb-3"
+        >
+            Nuestra boda
+        </p>
+
+        <!-- Separador decorativo -->
+        <div class="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+            <span class="block h-px w-16 sm:w-24 bg-[#f3ead9]/60"></span>
+            <span class="text-[#f3ead9] text-lg">&#10047;</span>
+            <span class="block h-px w-16 sm:w-24 bg-[#f3ead9]/60"></span>
+        </div>
+
+        <!-- NOMBRES DE LOS NOVIOS -->
+        <h1
+            class="font-romantic-lovely text-[#f6ecd6] leading-tight mb-2"
+        >
+            <span class="block text-5xl sm:text-6xl md:text-7xl">Alain</span>
+            <span
+                class="block text-4xl sm:text-5xl md:text-6xl text-[#d4682a] mt-3 mb-1 relative top-2"
+                >&amp;</span
+            >
+            <span class="block text-5xl sm:text-6xl md:text-7xl"
+                >Marisabel</span
+            >
+        </h1>
+
+        <!-- BOTÓN INGRESAR -->
+        <button
+            id="btn-ingresar"
+            class="mt-8 sm:mt-10 cursor-pointer rounded-xl px-8 py-3 sm:px-10 sm:py-4
+                   bg-gradient-to-b from-[#e08344] to-[#c95f28] text-[#fbf3e6]
+                   font-cormorant text-lg sm:text-xl tracking-wide shadow-lg
+                   border border-[#f3ead9]/30 transition-all duration-300
+                   hover:scale-105 active:scale-95 focus:outline-none"
+        >
+            Ingresar a mi invitación
+        </button>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const btnIngresar = document.getElementById("btn-ingresar");
+        const portada = document.getElementById("portada-sobre");
+
+        // ═══ ANIMACIÓN DE ENTRADA (todos los elementos al mismo tiempo) ═══
+        const tl = gsap.timeline({ delay: 0.3 });
+
+        // Flor superior: entra desde su lado (arriba-izquierda)
+        tl.from(
+            "#flor-arriba",
+            {
+                opacity: 0,
+                x: -80,
+                y: -80,
+                scale: 0.9,
+                duration: 1.8,
+                ease: "power3.out",
+            },
+            0,
+        );
+
+        // Flor inferior: entra desde su lado (abajo-derecha)
+        tl.from(
+            "#flor-abajo",
+            {
+                opacity: 0,
+                x: 80,
+                y: 80,
+                scale: 0.9,
+                duration: 1.8,
+                ease: "power3.out",
+            },
+            0,
+        );
+
+        // Contenido central: aparece suave al mismo tiempo
+        tl.from(
+            "#portada-sobre .relative",
+            {
+                opacity: 0,
+                y: 30,
+                duration: 1.6,
+                ease: "power2.out",
+            },
+            0,
+        );
+
+        // Pulso/zoom suave del botón (invita a hacer click)
+        gsap.to("#btn-ingresar", {
+            scale: 1.07,
+            duration: 1,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+        });
+
+        btnIngresar?.addEventListener("click", () => {
+            // Reproducir música
+            const audio = new Audio("/musica/melodia.mp3");
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch((error: any) => {
+                console.log("Error al reproducir audio:", error);
+            });
+
+            (window as any).audioGlobal = audio;
+            (window as any).estaReproduciendoGlobal = true;
+
+            // Avisar a NombresFlores que la portada se abrió
+            (window as any).portadaAbierta = true;
+            window.dispatchEvent(new CustomEvent("portada-abierta"));
+
+            // Actualizar iconos del reproductor
+            setTimeout(() => {
+                const iconoPlay = document.getElementById("icono-play");
+                const iconoPause = document.getElementById("icono-pause");
+                if (iconoPlay && iconoPause) {
+                    iconoPlay.classList.add("hidden");
+                    iconoPause.classList.remove("hidden");
+                }
+            }, 100);
+
+            // Desvanecer la portada y dirigir a NombresFlores
+            gsap.to(portada, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                onStart: () => {
+                    document.body.style.overflow = "auto";
+                },
+                onComplete: () => {
+                    portada?.remove();
+                    document
+                        .getElementById("nombres-flores")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                },
+            });
+        });
+    });
+</script>
+
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>

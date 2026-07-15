@@ -1,0 +1,143 @@
+---
+// Pase.astro
+interface Props {
+    numeroPases: number;
+    nombreInvitado?: string;
+}
+
+const { numeroPases = 1, nombreInvitado = "" } = Astro.props;
+---
+
+<section class="relative w-full pt-10 pb-10 sm:py-20 md:py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div
+                class="relative w-full max-w-md sm:max-w-lg aspect-[4/3]"
+                id="card-pase"
+            >
+                <!-- CARD PRINCIPAL -->
+                <div
+                    class="relative w-full h-full rounded-[10px] shadow-2xl overflow-hidden"
+                    id="card-principal-pase"
+                >
+                    <!-- IMAGEN DE FONDO AZUL -->
+                    <img
+                        src="/imagenes/azul.png"
+                        alt="Fondo pase"
+                        class="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div class="absolute inset-0 bg-[#1b3a5b]/50"></div>
+
+                    <!-- MARCO INTERIOR DE LÍNEA FINA CON ESQUINAS CURVAS -->
+                    <div
+                        class="absolute inset-5 border border-[#e6dcc4]/80 rounded-tl-[40px] rounded-br-[40px] pointer-events-none"
+                    >
+                    </div>
+                    <div
+                        class="absolute inset-[26px] border border-[#C2A96B]/40 rounded-tl-[34px] rounded-br-[34px] pointer-events-none"
+                    >
+                    </div>
+
+                    <!-- Contenido de la card -->
+                    <div
+                        class="relative w-full h-full px-10 py-8 z-10 text-center flex flex-col items-center justify-center"
+                    >
+                        <!-- BIENVENIDA -->
+                        <p
+                            class="font-cormorant text-[#f3ead9] text-sm sm:text-base tracking-wide leading-snug mb-3"
+                            id="bienvenida-pase"
+                        >
+                            Bienvenidos a la invitación de nuestra Boda
+                        </p>
+
+                        <!-- NOMBRE DEL INVITADO -->
+                        {
+                            nombreInvitado && (
+                                <h2
+                                    class="font-great-vibes text-[#d9c07a] text-4xl sm:text-5xl leading-tight mb-1"
+                                    id="nombre-invitado-pase"
+                                >
+                                    {nombreInvitado}
+                                </h2>
+                            )
+                        }
+
+                        <!-- RESERVADO -->
+                        <p
+                            class="font-cormorant text-[#f3ead9] text-sm sm:text-base tracking-wide mb-1"
+                        >
+                            Hemos reservado:
+                        </p>
+
+                        <!-- NÚMERO DE PASES -->
+                        <div id="numero-pase" class="mb-1">
+                            <p
+                                class="font-great-vibes text-[#d9c07a] text-5xl sm:text-6xl leading-none"
+                            >
+                                {numeroPases}
+                                {numeroPases === 1 ? "pase" : "pases"}
+                            </p>
+                        </div>
+
+                        <!-- EN SU HONOR -->
+                        <p
+                            class="font-cormorant text-[#f3ead9] text-sm sm:text-base tracking-wide"
+                            id="texto-pase"
+                        >
+                            en su honor
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🎬 ANIMACIONES CON GSAP                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.fromTo(
+                "#card-principal-pase",
+                { opacity: 0, y: 50, scale: 0.95 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#card-pase",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                ["#bienvenida-pase", "#nombre-invitado-pase", "#numero-pase", "#texto-pase"],
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.2,
+                    delay: 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#card-pase",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+        });
+    }
+</script>

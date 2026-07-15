@@ -1,0 +1,259 @@
+---
+// NombresFlores.astro
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 💛 SECCIÓN: FOTO PRINCIPAL + NOMBRES + FECHA + CITA          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section
+    id="nombres-flores"
+    class="relative w-full flex flex-col items-center overflow-hidden"
+>
+    <!-- FOTO PRINCIPAL (arriba) -->
+    <div class="w-full max-w-md mx-auto" id="foto-principal-wrap">
+        <img
+            src="/imagenes/fotoprincipal.png"
+            alt="Novios"
+            class="w-full h-auto object-cover"
+        />
+    </div>
+
+    <!-- MARCO DORADO CON EL CONTENIDO -->
+    <div
+        class="relative w-full max-w-md mx-auto px-6 pb-14 pt-2 -mt-5"
+        id="marco-container"
+    >
+        <!-- Bloque del marco -->
+        <div class="relative mx-5 my-2">
+            <!-- Marco recto -->
+            <div
+                class="absolute inset-0 border-2 border-[#C2A96B]/70 pointer-events-none"
+            >
+            </div>
+            <!-- Marco rotado (decorativo) -->
+            <div
+                class="absolute inset-0 border border-[#C2A96B]/50 pointer-events-none rotate-[4deg]"
+                id="marco-rotado"
+            >
+            </div>
+
+            <!-- HOJA DORADA (costadito) lado derecho -->
+            <img
+                src="/imagenes/costadito.png"
+                alt="Decoración dorada"
+                class="absolute -right-11 -top-6 w-24 sm:w-28 z-30 rotate-6 pointer-events-none select-none"
+                id="costadito"
+            />
+
+            <div
+                class="relative z-10 flex flex-col items-center text-center py-10 px-6 sm:px-8"
+            >
+                <!-- NOMBRES -->
+                <h2
+                    class="font-romantic-lovely not-italic text-[#d9c07a] text-5xl sm:text-6xl leading-none"
+                    id="nombre-1"
+                >
+                    Alain
+                </h2>
+                <span
+                    class="font-romantic-lovely not-italic text-[#d4682a] text-4xl sm:text-5xl my-2"
+                    id="amp"
+                >
+                    &amp;
+                </span>
+                <h2
+                    class="font-romantic-lovely not-italic text-[#d9c07a] text-5xl sm:text-6xl leading-none"
+                    id="nombre-2"
+                >
+                    Marisabel
+                </h2>
+
+                <!-- FECHA -->
+                <div
+                    class="flex items-center justify-center gap-3 mt-8 text-[#f3ead9]"
+                    id="fecha-row"
+                >
+                    <span
+                        class="font-cormorant uppercase tracking-normal text-base sm:text-lg text-[#e8d5a8]"
+                        >Sábado</span
+                    >
+                    <span class="text-[#d4682a] text-2xl">|</span>
+                    <span
+                        class="font-charm text-[#d9c07a] text-5xl sm:text-6xl leading-none relative top-[3px]"
+                        >12</span
+                    >
+                    <span class="text-[#d4682a] text-2xl">|</span>
+                    <span
+                        class="font-cormorant uppercase tracking-normal text-base sm:text-lg text-[#e8d5a8]"
+                        >Septiembre</span
+                    >
+                </div>
+
+                <!-- LUGAR / AÑO -->
+                <p
+                    class="font-cormorant uppercase tracking-[0.35em] text-[#C2A96B] text-xl sm:text-2xl mt-2"
+                    id="lugar"
+                >
+                    2026
+                </p>
+            </div>
+        </div>
+
+        <!-- CITA BÍBLICA -->
+        <p
+            class="font-cormorant text-[#f3ead9]/90 text-center text-lg sm:text-xl leading-relaxed mt-8 px-4"
+            id="cita-nombres"
+        >
+            Así que, no son ya más dos, sino una sola carne. Por tanto, lo que
+            Dios ha unido, no lo separe el hombre.
+            <span class="block mt-2 text-[#d9c07a] tracking-widest text-lg sm:text-xl"
+                >/ Mateo 19:6</span
+            >
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🎵 BOTÓN FLOTANTE PLAY/PAUSE                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<button
+    id="btn-audio-control"
+    aria-label="Controlar música"
+    class="fixed bottom-6 right-6 z-[9999] w-12 h-12 rounded-full shadow-lg
+           bg-white border border-[#122a4d]/20 flex items-center justify-center
+           transition-all duration-300 hover:scale-110 active:scale-95"
+    style="opacity: 0; pointer-events: none;"
+>
+    <svg
+        id="icono-pause"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 h-5 text-[#5E6B4A]"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+    >
+        <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+        <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+    </svg>
+    <svg
+        id="icono-play"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-5 h-5 text-[#5E6B4A] hidden"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+    >
+        <path d="M8 5v14l11-7z"></path>
+    </svg>
+</button>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🎬 ANIMACIONES CON GSAP                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // ═══ FOTO PRINCIPAL ═══
+        gsap.fromTo(
+            "#foto-principal-wrap",
+            { opacity: 0, scale: 1.05 },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 1.4,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: "#nombres-flores",
+                    start: "top 85%",
+                    toggleActions: "play none none reset",
+                },
+            },
+        );
+
+        // ═══ MARCO / NOMBRES / FECHA / CITA ═══
+        gsap.fromTo(
+            ["#nombre-1", "#amp", "#nombre-2", "#fecha-row", "#lugar", "#cita-nombres"],
+            { opacity: 0, y: 30 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "sine.out",
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: "#marco-container",
+                    start: "top 85%",
+                    toggleActions: "play none none reset",
+                },
+            },
+        );
+
+        // ═══ HOJA DORADA (costadito) ═══
+        gsap.fromTo(
+            "#costadito",
+            { opacity: 0, x: 40, rotate: 8 },
+            {
+                opacity: 1,
+                x: 0,
+                rotate: 0,
+                duration: 1.4,
+                ease: "power2.out",
+                delay: 0.4,
+                scrollTrigger: {
+                    trigger: "#marco-container",
+                    start: "top 85%",
+                    toggleActions: "play none none reset",
+                },
+            },
+        );
+
+        // ═══ BOTÓN FLOTANTE PLAY/PAUSE ═══
+        const btnAudio = document.getElementById(
+            "btn-audio-control",
+        ) as HTMLButtonElement;
+        const iconoPlay = document.getElementById("icono-play");
+        const iconoPause = document.getElementById("icono-pause");
+
+        const intervalo = setInterval(() => {
+            const audio = (window as any).audioGlobal;
+            if (audio) {
+                clearInterval(intervalo);
+                gsap.to(btnAudio, {
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    onStart: () => {
+                        btnAudio.style.pointerEvents = "auto";
+                    },
+                });
+                iconoPlay?.classList.add("hidden");
+                iconoPause?.classList.remove("hidden");
+
+                btnAudio.addEventListener("click", () => {
+                    const audioActual = (window as any).audioGlobal;
+                    const reproduciendo = (window as any)
+                        .estaReproduciendoGlobal;
+                    if (!audioActual) return;
+                    if (reproduciendo) {
+                        audioActual.pause();
+                        (window as any).estaReproduciendoGlobal = false;
+                        iconoPause?.classList.add("hidden");
+                        iconoPlay?.classList.remove("hidden");
+                    } else {
+                        audioActual.play();
+                        (window as any).estaReproduciendoGlobal = true;
+                        iconoPlay?.classList.add("hidden");
+                        iconoPause?.classList.remove("hidden");
+                    }
+                    gsap.fromTo(
+                        btnAudio,
+                        { scale: 0.85 },
+                        { scale: 1, duration: 0.3, ease: "back.out(2)" },
+                    );
+                });
+            }
+        }, 300);
+    });
+</script>
