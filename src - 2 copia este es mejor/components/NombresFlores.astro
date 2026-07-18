@@ -10,14 +10,11 @@
     class="relative w-full flex flex-col items-center overflow-hidden"
 >
     <!-- FOTO PRINCIPAL (arriba) -->
-    <div
-        class="w-full max-w-md mx-auto overflow-hidden [mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)]"
-        id="foto-principal-wrap"
-    >
+    <div class="w-full max-w-md mx-auto" id="foto-principal-wrap">
         <img
-            src="/imagenes/fotoprincipal.webp"
+            src="/imagenes/fotoprincipal.png"
             alt="Novios"
-            class="w-full h-auto object-cover scale-110 origin-center"
+            class="w-full h-auto object-cover"
         />
     </div>
 
@@ -26,8 +23,20 @@
         class="relative w-full max-w-md mx-auto px-6 pb-14 pt-2 -mt-5"
         id="marco-container"
     >
-        <!-- Bloque del contenido -->
+        <!-- Bloque del marco -->
         <div class="relative mx-5 my-2">
+            <!-- Marco recto -->
+            <div
+                class="absolute inset-0 border-2 border-[#C2A96B]/70 pointer-events-none"
+            >
+            </div>
+            <!-- Marco rotado (decorativo) -->
+            <div
+                class="absolute inset-0 border border-[#C2A96B]/50 pointer-events-none rotate-[4deg]"
+                id="marco-rotado"
+            >
+            </div>
+
             <!-- HOJA DORADA (costadito) lado derecho -->
             <img
                 src="/imagenes/costadito.png"
@@ -47,7 +56,7 @@
                     Alain
                 </h2>
                 <span
-                    class="font-romantic-lovely not-italic text-[#d4682a] text-4xl sm:text-5xl my-5"
+                    class="font-romantic-lovely not-italic text-[#d4682a] text-4xl sm:text-5xl my-2"
                     id="amp"
                 >
                     &amp;
@@ -61,39 +70,44 @@
 
                 <!-- FECHA -->
                 <div
-                    class="flex flex-col items-center w-full mt-12 text-[#f3ead9]"
+                    class="flex items-center justify-center gap-3 mt-8 text-[#f3ead9]"
                     id="fecha-row"
                 >
                     <span
-                        class="font-jane-light uppercase tracking-[0.3em] text-2xl sm:text-3xl text-[#e8d5a8]"
+                        class="font-cormorant uppercase tracking-normal text-base sm:text-lg text-[#e8d5a8]"
                         >Sábado</span
                     >
-                    <div class="flex items-center gap-4 my-2">
-                        <span class="h-px w-12 bg-[#C2A96B]/60"></span>
-                        <span
-                            class="font-mb-deco text-[#d9c07a] text-7xl sm:text-8xl leading-none"
-                            >12</span
-                        >
-                        <span class="h-px w-12 bg-[#C2A96B]/60"></span>
-                    </div>
+                    <span class="text-[#d4682a] text-2xl">|</span>
                     <span
-                        class="font-jane-light uppercase tracking-[0.3em] text-2xl sm:text-3xl text-[#e8d5a8]"
-                        id="lugar"
-                        >Septiembre 2026</span
+                        class="font-charm text-[#d9c07a] text-5xl sm:text-6xl leading-none relative top-[3px]"
+                        >12</span
+                    >
+                    <span class="text-[#d4682a] text-2xl">|</span>
+                    <span
+                        class="font-cormorant uppercase tracking-normal text-base sm:text-lg text-[#e8d5a8]"
+                        >Septiembre</span
                     >
                 </div>
+
+                <!-- LUGAR / AÑO -->
+                <p
+                    class="font-cormorant uppercase tracking-[0.35em] text-[#C2A96B] text-xl sm:text-2xl mt-2"
+                    id="lugar"
+                >
+                    2026
+                </p>
             </div>
         </div>
 
         <!-- CITA BÍBLICA -->
         <p
-            class="font-sans text-[#f3ead9]/90 text-center text-base leading-relaxed mt-2 px-4"
+            class="font-cormorant text-[#f3ead9]/90 text-center text-lg sm:text-xl leading-relaxed mt-8 px-4"
             id="cita-nombres"
         >
             Así que, no son ya más dos, sino una sola carne. Por tanto, lo que
             Dios ha unido, no lo separe el hombre.
-            <span class="block mt-2 text-[#d9c07a] tracking-widest text-base"
-                > Mateo 19:6</span
+            <span class="block mt-2 text-[#d9c07a] tracking-widest text-lg sm:text-xl"
+                >/ Mateo 19:6</span
             >
         </p>
     </div>

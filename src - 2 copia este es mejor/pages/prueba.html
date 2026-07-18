@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo linea con ondas animada</title>
+<style>
+  body {
+    margin: 0;
+    background: #0f1420;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+  .invitacion {
+    position: relative;
+    max-width: 420px;
+    margin: 40px auto;
+    background: #1a2036;
+    border-radius: 16px;
+    padding: 40px 30px 40px 90px;
+    min-height: 500px;
+    overflow: hidden;
+  }
+  svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 90px;
+  }
+  #linea {
+    fill: none;
+    stroke: #d4af37;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: dibujar 3.5s ease-in-out forwards;
+  }
+  @keyframes dibujar {
+    to { stroke-dashoffset: 0; }
+  }
+  h1 {
+    font-size: 22px;
+    margin: 0 0 10px;
+    color: #d4af37;
+  }
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cfd3e0;
+  }
+</style>
+</head>
+<body>
+
+<div class="invitacion">
+  <svg viewBox="0 0 90 500" preserveAspectRatio="none">
+    <path id="linea"
+      d="M 20 20 Q 70 60 20 100 Q -30 140 20 180
+         Q 70 220 20 260 Q -30 300 20 340
+         Q 70 380 20 420 Q -30 460 20 480"
+      pathLength="100" />
+  </svg>
+
+  <h1>Maria &amp; Antonio</h1>
+  <p>Esta es la linea con ondas dibujandose sola al abrir la invitacion, como una serpentina lateral.</p>
+  <p>Puedes cambiar el color, el grosor, la velocidad y la forma de las ondas segun el diseno final.</p>
+  <p>Se puede hacer tambien que la linea avance a medida que el usuario hace scroll, en vez de dibujarse sola al cargar.</p>
+</div>
+
+</body>
+</html>
