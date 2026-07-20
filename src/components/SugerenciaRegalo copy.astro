@@ -1,7 +1,7 @@
 ﻿---
 // SugerenciaRegalo.astro
 const numeroWhatsapp = "59169414806";
-const mensajeWhatsapp = "Hola, me gustaría ver el catálogo de regalos de Alain y Marisabel, por favor.";
+const mensajeWhatsapp = "Quiero ver el catálogo de regalos de Alain y Marisabel.";
 const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensajeWhatsapp)}`;
 ---
 
@@ -18,7 +18,7 @@ const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(m
     <img
         src="/imagenes/costadito2.png"
         alt="Decoración floral"
-        class="absolute -left-8 top-[85%] -translate-y-1/2 w-20 sm:w-24 z-20 pointer-events-none select-none"
+        class="absolute -left-3 top-[85%] -translate-y-1/2 w-20 sm:w-24 z-20 pointer-events-none select-none"
         id="costadito2-regalos"
     />
 
@@ -70,6 +70,20 @@ const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(m
         >
             Av. Uyuni, casi puente Muyurina
         </p>
+
+        <!-- BOTÓN VER UBICACIÓN -->
+        <a
+            href="https://maps.app.goo.gl/7j8NNEw8URMWDhCv7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-10 py-3 rounded-xl font-jane-light text-white text-base uppercase tracking-[0.2em]
+                   bg-gradient-to-b from-[#e08344] to-[#c95f28]
+                   border border-[#f3ead9]/20 shadow-lg
+                   transition-all duration-300 hover:scale-105 active:scale-95"
+            id="btn-ubicacion-regalo"
+        >
+            Ver Ubicación
+        </a>
 
         <!-- BOTÓN CONTACTO WHATSAPP (catálogo de regalos) -->
         <a
@@ -130,9 +144,9 @@ const urlWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(m
             0.4,
         )
         .fromTo(
-            "#btn-whatsapp-regalo",
+            ["#btn-ubicacion-regalo", "#btn-whatsapp-regalo"],
             { opacity: 0, scale: 0.9 },
-            { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.4)" },
+            { opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: "back.out(1.4)" },
             0.8,
         );
     });
