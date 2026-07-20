@@ -63,6 +63,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Mollen Light';
+  src: url('/fonts/Mollen Trial-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 
 
 
@@ -104,4 +111,9 @@
 /* Fuente Jane Light */
 .font-jane-light {
   font-family: 'Jane Light', sans-serif !important;
+}
+
+/* Fuente Mollen Light */
+.font-mollen-light {
+  font-family: 'Mollen Light', sans-serif !important;
 }

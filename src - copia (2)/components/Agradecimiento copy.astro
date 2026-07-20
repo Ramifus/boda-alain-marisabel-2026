@@ -1,8 +1,8 @@
----
-// Despedida.astro
+﻿---
+// Agradecimiento.astro
 ---
 
-<section class="relative w-full pt-10 pb-14 px-6 overflow-hidden" id="seccion-despedida">
+<section class="relative w-full pt-10 pb-14 px-6 overflow-hidden" id="seccion-agradecimiento">
 
     <!-- SEPARADOR DORADO SUPERIOR -->
     <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C2A96B]/60 to-transparent"></div>
@@ -14,18 +14,18 @@
         <!-- TÍTULO "Agradecimiento" -->
         <h2
             class="font-romantic-lovely text-[#d9c07a] text-5xl sm:text-6xl leading-tight mb-4"
-            id="titulo-despedida"
+            id="titulo-agradecimiento"
         >
             Agradecimiento
         </h2>
 
         <!-- PUNTO SEPARADOR -->
-        <div class="w-2 h-2 rounded-full bg-[#d4682a] mb-6" id="punto-despedida"></div>
+        <div class="w-2 h-2 rounded-full bg-[#d4682a] mb-6" id="punto-agradecimiento"></div>
 
         <!-- MENSAJE -->
         <p
-            class="font-sans text-[#f3ead9] text-base sm:text-lg leading-relaxed"
-            id="texto-despedida"
+            class="font-mollen-light text-[#f3ead9]/90 text-base sm:text-lg leading-relaxed"
+            id="texto-agradecimiento"
         >
             A Dios por ser pieza fundamental en nuestro matrimonio, a nuestros padres y hermanos por ser nuestro apoyo y soporte, y a cada uno de ustedes por acompañarnos en este día tan especial con su presencia y cariño incondicional.
         </p>
@@ -42,26 +42,26 @@
     document.addEventListener("DOMContentLoaded", () => {
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: "#seccion-despedida",
+                trigger: "#seccion-agradecimiento",
                 start: "top 85%",
                 toggleActions: "play none none reset",
             },
         });
 
         tl.fromTo(
-            "#titulo-despedida",
+            "#titulo-agradecimiento",
             { opacity: 0, y: -20 },
             { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
             0,
         )
         .fromTo(
-            "#punto-despedida",
+            "#punto-agradecimiento",
             { opacity: 0, scale: 0 },
             { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" },
             0.3,
         )
         .fromTo(
-            "#texto-despedida",
+            "#texto-agradecimiento",
             { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 1, ease: "sine.out" },
             0.5,

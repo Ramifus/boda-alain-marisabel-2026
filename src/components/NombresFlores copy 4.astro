@@ -1,4 +1,4 @@
-﻿---
+---
 // NombresFlores.astro
 ---
 
@@ -17,7 +17,7 @@
         <img
             src="/imagenes/fotoprincipal.webp"
             alt="Novios"
-            class="w-full h-auto object-cover scale-110 origin-center"
+            class="w-full h-auto object-cover scale-[1.35] origin-center"
         />
     </div>
 
@@ -61,36 +61,27 @@
 
                 <!-- FECHA -->
                 <div
-                    class="grid grid-cols-3 items-center w-full mt-12 text-[#f3ead9]"
+                    class="flex flex-col items-center w-full mt-12 text-[#f3ead9]"
                     id="fecha-row"
                 >
-                    <div class="flex items-center justify-end gap-3">
+                    <span
+                        class="font-jane-light uppercase tracking-[0.3em] text-2xl sm:text-3xl text-[#e8d5a8]"
+                        >Sábado</span
+                    >
+                    <div class="flex items-center gap-4 my-2">
+                        <span class="h-px w-12 bg-[#C2A96B]/60"></span>
                         <span
-                            class="font-jane-light uppercase tracking-wide text-2xl sm:text-3xl text-[#e8d5a8]"
-                            >Sábado</span
+                            class="font-mb-deco text-[#d9c07a] text-7xl sm:text-8xl leading-none"
+                            >12</span
                         >
-                        <span class="text-[#d4682a] text-3xl font-light">|</span>
+                        <span class="h-px w-12 bg-[#C2A96B]/60"></span>
                     </div>
                     <span
-                        class="font-mb-deco text-[#d9c07a] text-7xl sm:text-8xl leading-none text-center relative top-[3px]"
-                        >12</span
+                        class="font-jane-light uppercase tracking-[0.3em] text-2xl sm:text-3xl text-[#e8d5a8]"
+                        id="lugar"
+                        >Septiembre 2026</span
                     >
-                    <div class="flex items-center justify-start gap-3">
-                        <span class="text-[#d4682a] text-3xl font-light">|</span>
-                        <span
-                            class="font-jane-light uppercase tracking-wide text-2xl sm:text-3xl text-[#e8d5a8]"
-                            >Septiembre</span
-                        >
-                    </div>
                 </div>
-
-                <!-- LUGAR / AÑO -->
-                <p
-                    class="font-mb-deco uppercase tracking-[0.35em] text-[#C2A96B] text-2xl sm:text-3xl mt-3"
-                    id="lugar"
-                >
-                    2026
-                </p>
             </div>
         </div>
 

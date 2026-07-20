@@ -11,6 +11,14 @@
     <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C2A96B]/60 to-transparent"></div>
     <div class="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#C2A96B]/60 to-transparent"></div>
 
+    <!-- DECORACIÓN FLORAL COSTADITO2 (izquierda) -->
+    <img
+        src="/imagenes/costadito2.png"
+        alt="Decoración floral"
+        class="absolute -left-3 top-[85%] -translate-y-1/2 w-20 sm:w-24 z-20 pointer-events-none select-none"
+        id="costadito2-regalos"
+    />
+
     <!-- CONTENIDO CENTRADO -->
     <div class="relative z-10 flex flex-col items-center text-center max-w-xs mx-auto">
 
@@ -42,7 +50,7 @@
         </p>
 
         <!-- IMAGEN MULTICENTER -->
-        <div class="mb-6 w-full" id="img-multicenter">
+        <div class="mb-3 w-full" id="img-multicenter">
             <div class="border border-[#C2A96B]/60 rounded-sm px-6 py-4 flex items-center justify-center">
                 <img
                     src="/imagenes/multicenter.png"
@@ -52,9 +60,17 @@
             </div>
         </div>
 
+        <!-- DIRECCIÓN -->
+        <p
+            class="font-sans text-[#f3ead9] text-base sm:text-lg leading-snug mb-6"
+            id="direccion-regalo"
+        >
+            Av. Uyuni, casi puente Muyurina
+        </p>
+
         <!-- BOTÓN VER UBICACIÓN -->
         <a
-            href="#"
+            href="https://maps.app.goo.gl/7j8NNEw8URMWDhCv7"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-block px-10 py-3 rounded-xl font-jane-light text-white text-base uppercase tracking-[0.2em]
@@ -100,7 +116,7 @@
             0.2,
         )
         .fromTo(
-            ["#texto-regalo", "#img-multicenter"],
+            ["#texto-regalo", "#img-multicenter", "#direccion-regalo"],
             { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.9, stagger: 0.2, ease: "sine.out" },
             0.4,

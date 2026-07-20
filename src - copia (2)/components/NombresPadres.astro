@@ -1,4 +1,4 @@
----
+﻿---
 // NombresPadres.astro
 ---
 
@@ -28,7 +28,7 @@
         <img
             src="/imagenes/costadito.png"
             alt="Decoración floral"
-            class="absolute -right-10 top-4 w-24 sm:w-28 z-10 pointer-events-none select-none rotate-6"
+            class="absolute -right-10 -top-14 w-24 sm:w-28 z-10 pointer-events-none select-none rotate-6"
             id="costadito-padres"
         />
 
@@ -37,7 +37,7 @@
             <p class="font-jane-light text-[#d9c07a] text-lg sm:text-base tracking-[0.15em] uppercase mb-1">
                 Padres del Novio
             </p>
-            <p class="font-sans text-[#f3ead9] text-base sm:text-lg leading-snug tracking-wide">
+            <p class="font-mollen-light text-[#f3ead9]/90 text-base leading-relaxed">
                 Francisco Canales Medina<br />
                 Norma Molina Villalta
             </p>
@@ -48,9 +48,47 @@
             <p class="font-jane-light text-[#d9c07a] text-lg sm:text-base tracking-[0.15em] uppercase mb-1">
                 Padres de la Novia
             </p>
-            <p class="font-sans text-[#f3ead9] text-base sm:text-lg leading-snug tracking-wide">
-                Juan José López Fernández<br />
-                Marisabel Arteaga Barriga
+            <p class="font-mollen-light text-[#f3ead9]/90 text-base leading-relaxed">
+                Sof. Mtre. (SP) Juan José López  Fernández<br />
+                Marísabel Arteaga Barriga
+            </p>
+        </div>
+
+    </div>
+
+    <!-- PADRINOS -->
+    <div class="relative max-w-xs mx-auto mt-10" id="seccion-padrinos">
+
+        <!-- PADRINOS DE ARO -->
+        <div class="text-center mb-6" id="padrinos-aro">
+            <p class="font-jane-light text-[#d9c07a] text-lg sm:text-base tracking-[0.15em] uppercase mb-1">
+                Padrinos de Aro
+            </p>
+            <p class="font-mollen-light text-[#f3ead9]/90 text-base leading-relaxed">
+                Prof. Reyna Canelas Medina <br />
+                Carlos Anguela Ojeda
+            </p>
+        </div>
+
+        <!-- PADRINOS RELIGIOSOS -->
+        <div class="text-center mb-6" id="padrinos-religiosos">
+            <p class="font-jane-light text-[#d9c07a] text-lg sm:text-base tracking-[0.15em] uppercase mb-1">
+                Padrinos Religiosos
+            </p>
+            <p class="font-mollen-light text-[#f3ead9]/90 text-base leading-relaxed">
+                Sof. Mtre. (SP) Renan Pardo Meneces<br />
+                Arq. Margarita Maida Arze
+            </p>
+        </div>
+
+        <!-- PADRINOS DE CIVIL -->
+        <div class="text-center" id="padrinos-civil">
+            <p class="font-jane-light text-[#d9c07a] text-lg sm:text-base tracking-[0.15em] uppercase mb-1">
+                Padrinos de Civil
+            </p>
+            <p class="font-mollen-light text-[#f3ead9]/90 text-base leading-relaxed">
+                Prof. Romelinda Veizaga Medina<br />
+                Ing. Jose Antonio Orellana Ricaldez
             </p>
         </div>
 
@@ -95,6 +133,12 @@
             { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.9, stagger: 0.2, ease: "sine.out" },
             0.4,
+        )
+        .fromTo(
+            ["#padrinos-aro", "#padrinos-religiosos", "#padrinos-civil"],
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.9, stagger: 0.2, ease: "sine.out" },
+            0.8,
         );
     });
 </script>

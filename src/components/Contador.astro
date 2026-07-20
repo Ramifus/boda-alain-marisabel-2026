@@ -1,19 +1,20 @@
----
+﻿---
 // ContadorRegresivo.astro
 ---
 
 <!-- ═══════════════════════════════════════════════════════════ --><!-- ⏰ COMPONENTE CONTADOR REGRESIVO                            --><!-- ═══════════════════════════════════════════════════════════ -->
 <section class="relative pt-2 pb-8 px-6 overflow-hidden">
-    <div class="max-w-md md:max-w-md lg:max-w-xl xl:max-w-2xl mx-auto">
-        <!-- CUENTA REGRESIVA - ESTILO COMPACTO -->
-        <div class="relative" id="cuenta-regresiva">
-            <!-- DECORACIÓN FLORAL COSTADITO2 (izquierda) -->
-            <img
-                src="/imagenes/costadito2.png"
-                alt="Decoración floral"
-                class="absolute -left-16 top-[70%] -translate-y-1/2 w-24 sm:w-28 z-20 pointer-events-none select-none -rotate-6"
-                id="costadito2-contador"
-            />
+    <div class="relative">
+        <!-- DECORACIÓN FLORAL COSTADITO2 pegada a la izquierda en todos los tamaños -->
+        <img
+            src="/imagenes/costadito2.png"
+            alt="Decoración floral"
+            class="absolute -left-16 top-[70%] -translate-y-1/2 w-24 sm:w-28 z-20 pointer-events-none select-none -rotate-6"
+            id="costadito2-contador"
+        />
+        <div class="max-w-md md:max-w-md lg:max-w-xl xl:max-w-2xl mx-auto">
+            <!-- CUENTA REGRESIVA - ESTILO COMPACTO -->
+            <div class="relative" id="cuenta-regresiva">
             <!-- Etiqueta "Faltan" arriba centrada -->
             <div
                 class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10"
@@ -22,7 +23,7 @@
                 <div
                     class="bg-[#d4682a] text-white px-6 py-1.5 rounded-full shadow-md"
                 >
-                    <p class="font-sans text-sm md:text-base tracking-wide">
+                    <p class="font-mollen-light text-sm md:text-base tracking-wide">
                         Faltan
                     </p>
                 </div>
@@ -42,7 +43,7 @@
                             00
                         </p>
                         <p
-                            class="font-sans text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
+                            class="font-mollen-light text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
                         >
                             Días
                         </p>
@@ -57,7 +58,7 @@
                             00
                         </p>
                         <p
-                            class="font-sans text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
+                            class="font-mollen-light text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
                         >
                             Hrs
                         </p>
@@ -72,7 +73,7 @@
                             00
                         </p>
                         <p
-                            class="font-sans text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
+                            class="font-mollen-light text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
                         >
                             Mins
                         </p>
@@ -87,13 +88,14 @@
                             00
                         </p>
                         <p
-                            class="font-sans text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
+                            class="font-mollen-light text-xs md:text-base text-[#d9c07a] uppercase tracking-widest"
                         >
                             Segs
                         </p>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </section>

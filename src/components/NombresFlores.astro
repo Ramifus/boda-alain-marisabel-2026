@@ -11,34 +11,36 @@
 >
     <!-- FOTO PRINCIPAL (arriba) -->
     <div
-        class="w-full max-w-md mx-auto overflow-hidden [mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)]"
+        class="w-full overflow-hidden [mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_88%,transparent_100%)]"
         id="foto-principal-wrap"
     >
         <img
             src="/imagenes/fotoprincipal.webp"
             alt="Novios"
-            class="w-full h-auto object-cover scale-[1.35] origin-center"
+            class="w-full h-auto"
         />
     </div>
 
     <!-- MARCO DORADO CON EL CONTENIDO -->
     <div
-        class="relative w-full max-w-md mx-auto px-6 pb-14 pt-2 -mt-5"
+        class="relative w-full pb-14 pt-2 -mt-5"
         id="marco-container"
     >
-        <!-- Bloque del contenido -->
-        <div class="relative mx-5 my-2">
-            <!-- HOJA DORADA (costadito) lado derecho -->
-            <img
-                src="/imagenes/costadito.png"
-                alt="Decoración dorada"
-                class="absolute -right-11 -top-6 w-24 sm:w-28 z-30 rotate-6 pointer-events-none select-none"
-                id="costadito"
-            />
+        <!-- HOJA DORADA (costadito) pegada a la derecha en todos los tamaños -->
+        <img
+            src="/imagenes/costadito.png"
+            alt="Decoración dorada"
+            class="absolute right-0 -top-2 w-24 sm:w-28 z-30 rotate-6 pointer-events-none select-none"
+            id="costadito"
+        />
 
-            <div
-                class="relative z-10 flex flex-col items-center text-center py-10 px-6 sm:px-8"
-            >
+        <!-- Contenido centrado -->
+        <div class="relative w-full max-w-md mx-auto px-6">
+            <!-- Bloque del contenido -->
+            <div class="relative mx-5 my-2">
+                <div
+                    class="relative z-10 flex flex-col items-center text-center py-10 px-6 sm:px-8"
+                >
                 <!-- NOMBRES -->
                 <h2
                     class="font-romantic-lovely not-italic text-[#d9c07a] text-5xl sm:text-6xl leading-none"
@@ -87,7 +89,7 @@
 
         <!-- CITA BÍBLICA -->
         <p
-            class="font-sans text-[#f3ead9]/90 text-center text-base leading-relaxed mt-2 px-4"
+            class="font-mollen-light text-[#f3ead9]/90 text-center text-base leading-relaxed mt-2 px-4"
             id="cita-nombres"
         >
             Así que, no son ya más dos, sino una sola carne. Por tanto, lo que
@@ -96,6 +98,7 @@
                 > Mateo 19:6</span
             >
         </p>
+        </div>
     </div>
 </section>
 
